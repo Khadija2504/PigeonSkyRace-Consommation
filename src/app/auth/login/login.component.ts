@@ -33,6 +33,8 @@ export class LoginComponent {
     const userData = this.loginForm.value;
     this.authService.login(userData).subscribe({
       next: (Response) => {
+        console.log(Response);
+        localStorage.setItem('token', JSON.stringify(Response));
         this.successMessage = 'Login succesfully!! redirecting to the homa page...';
         setTimeout(() => this.router.navigate(['auth/login']), 200);
       },
