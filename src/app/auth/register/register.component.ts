@@ -43,7 +43,7 @@ export class RegisterComponent {
     this.authService.register(userData).subscribe({
       next: (response) => {
         this.successMessage = 'Registration successful! Redirecting to login...';
-        setTimeout(() => this.router.navigate(['/auth/login']), 2000);
+        setTimeout(() => this.router.navigate(['/auth/login']), 200);
       },
       error: (error) => {
         this.errorMessage = error.error.message || 'Registration failed. Please try again.';
