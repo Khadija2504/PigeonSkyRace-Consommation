@@ -17,4 +17,25 @@ export class AuthService {
   login(userData: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/login`, userData);
   }
+
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
+
+  isLoggedIn(): boolean {
+    return !!this.getToken();
+  }
+
+  getUserRole(): string | null {
+    const token = this.getToken();
+    if (token) {
+      try {
+        const decodedToken = JSON.parse(atob(token.split('.')[1]));
+        return decodedToken.role;
+      } catch (e) {
+        return null;
+      }
+    }
+    return null;
+  }
 }

@@ -35,11 +35,20 @@ export class LoginComponent {
       next: (Response) => {
         console.log(Response);
         localStorage.setItem('token', JSON.stringify(Response));
-        this.successMessage = 'Login succesfully!! redirecting to the homa page...';
-        setTimeout(() => this.router.navigate(['auth/login']), 200);
+        const userRole = this.authService.getUserRole();
+        this.successMessage = 'Login successful! Redirecting...';
+        setTimeout(() => {
+          if (userRole === 'breeder') {
+            this.router.navigate(['/pigeon/pigeons-list']);
+          } else if(userRole === 'organizer') {
+            this.router.navigate(['/competition/competitions-list']);
+          } else {
+            this.router.navigate(['/']);
+          }
+        }, 200);
       },
       error: (error) => {
-        this.errorMessage = error.error.message || 'login failed. Please try again.';
+        this.errorMessage = error.error.message || 'login failed. Please try again';
         this.isSubmitting = false;
       }
     });
