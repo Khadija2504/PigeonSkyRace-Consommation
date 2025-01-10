@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -20,4 +20,17 @@ export class PigeonService {
   addPigeon(PigeonData: any) : Observable<any> {
     return this.http.post(`${this.baseUrl}/addPigeon`, PigeonData);
   }
+
+  private getpigeonsurl = `${this.baseUrl}/getAllPigeons`
+
+  getPigeons(): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.get<any>(this.getpigeonsurl, { headers });
+  }
+
 }

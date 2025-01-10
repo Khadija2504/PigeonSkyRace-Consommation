@@ -1,0 +1,26 @@
+<div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+<table *ngIf="pigeons.length > 0; else noPigeons">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Breed</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pigeon of pigeons">
+      <td>{{ pigeon.id }}</td>
+      <td>{{ pigeon.name }}</td>
+      <td>{{ pigeon.breed }}</td>
+      <td>
+        <button (click)="viewPigeonDetails(pigeon.id)">View</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noPigeons>
+  <p>No pigeons found.</p>
+</ng-template>

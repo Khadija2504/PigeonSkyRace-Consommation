@@ -31,11 +31,14 @@ export class PigeonFormComponent {
     this.isSubmitting = true;
     this.errorMessage = null;
     this.successMessage = null;
-
+    if(!this.pigeonService.isLoggedIn) {
+      setTimeout(() => this.router.navigate(['/auth/login']), 200);
+    }
     const pigeonData = this.pigeonForm.value;
     this.pigeonService.addPigeon(pigeonData).subscribe({
       next: (Response) => {
-        this.successMessage = 'Pigron added succesfully';
+        
+        this.successMessage = 'pigeon added succesfully!!';
         setTimeout(() => this.router.navigate(['/pigeon/addForm']), 200);
       },
       error: (error) => {
