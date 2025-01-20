@@ -29,8 +29,12 @@ export class AuthService {
   getUserRole(): string | null {
     const token = this.getToken();
     if (token) {
+      console.log(token);
+      
       try {
         const decodedToken = JSON.parse(atob(token.split('.')[1]));
+        console.log(decodedToken.role);
+        
         return decodedToken.role;
       } catch (e) {
         return null;

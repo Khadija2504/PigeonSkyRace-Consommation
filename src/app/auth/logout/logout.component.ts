@@ -16,6 +16,7 @@ export class LogoutComponent {
 
   logout() {
     localStorage.removeItem('token');
+    setTimeout(()=> this.router.navigate(['/auth/login']));
   }
 
 }

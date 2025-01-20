@@ -26,7 +26,7 @@ export class PigeonListComponent implements OnInit {
         this.pigeons = response;
       },
       error: (error) => {
-        this.errorMessage = error.error?.message || 'pailed to load pigeons. please try again.';
+        this.errorMessage = error.error?.message || 'failed to load pigeons. please try again.';
       }
     });
   }

@@ -3,17 +3,20 @@
 <table *ngIf="pigeons.length > 0; else noPigeons">
   <thead>
     <tr>
-      <th>ID</th>
       <th>Name</th>
-      <th>Breed</th>
-      <th>Actions</th>
+      <th>Age</th>
+      <th>Color</th>
+      <th>Gender</th>
+      <th>Badge</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let pigeon of pigeons">
-      <td>{{ pigeon.id }}</td>
       <td>{{ pigeon.name }}</td>
-      <td>{{ pigeon.breed }}</td>
+      <td>{{ pigeon.age }}</td>
+      <td>{{ pigeon.color }}</td>
+      <td>{{ pigeon.gender }}</td>
+      <td>{{ pigeon.badge }}</td>
       <td>
         <button (click)="viewPigeonDetails(pigeon.id)">View</button>
       </td>

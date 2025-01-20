@@ -39,7 +39,7 @@ export class LoginComponent {
         this.successMessage = 'Login successful! Redirecting...';
         setTimeout(() => {
           if (userRole === 'breeder') {
-            this.router.navigate(['/pigeon/pigeons-list']);
+            this.router.navigate(['/pigeon/pigeonsList']);
           } else if(userRole === 'organizer') {
             this.router.navigate(['/competition/competitions-list']);
           } else {

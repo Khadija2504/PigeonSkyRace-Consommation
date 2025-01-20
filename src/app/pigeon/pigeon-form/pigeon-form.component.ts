@@ -39,7 +39,7 @@ export class PigeonFormComponent {
       next: (Response) => {
         
         this.successMessage = 'pigeon added succesfully!!';
-        setTimeout(() => this.router.navigate(['/pigeon/addForm']), 200);
+        setTimeout(() => this.router.navigate(['/pigeon/pigeonsList']), 200);
       },
       error: (error) => {
         this,this.errorMessage = error.error.message || 'add pigeon fild';
