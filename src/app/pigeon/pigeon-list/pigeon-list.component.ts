@@ -31,7 +31,4 @@ export class PigeonListComponent implements OnInit {
     });
   }
 
-  viewPigeonDetails(pigeonId: string): void {
-    this.router.navigate(['/pigeon', pigeonId]); 
-  }
 }
