@@ -31,12 +31,15 @@ export class PigeonFormComponent {
     this.isSubmitting = true;
     this.errorMessage = null;
     this.successMessage = null;
-
+    if(!this.pigeonService.isLoggedIn) {
+      setTimeout(() => this.router.navigate(['/auth/login']), 200);
+    }
     const pigeonData = this.pigeonForm.value;
     this.pigeonService.addPigeon(pigeonData).subscribe({
       next: (Response) => {
-        this.successMessage = 'Pigron added succesfully';
-        setTimeout(() => this.router.navigate(['/pigeon/addForm']), 200);
+        
+        this.successMessage = 'pigeon added succesfully!!';
+        setTimeout(() => this.router.navigate(['/pigeon/pigeonsList']), 200);
       },
       error: (error) => {
         this,this.errorMessage = error.error.message || 'add pigeon fild';

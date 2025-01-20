@@ -5,12 +5,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PigeonRoutingModule } from './pigeon-routing.module';
 import { PigeonComponent } from './pigeon.component';
 import { PigeonFormComponent } from './pigeon-form/pigeon-form.component';
+import { PigeonListComponent } from './pigeon-list/pigeon-list.component';
 
 
 @NgModule({
   declarations: [
     PigeonComponent,
-    PigeonFormComponent
+    PigeonFormComponent,
+    PigeonListComponent
   ],
   imports: [
     CommonModule,
