@@ -42,7 +42,7 @@ export class PigeonFormComponent {
         setTimeout(() => this.router.navigate(['/pigeon/pigeonsList']), 200);
       },
       error: (error) => {
-        this,this.errorMessage = error.error.message || 'add pigeon fild';
+        this.errorMessage = error.error.message || 'add pigeon fild';
         this.isSubmitting = false;
       }
     });
