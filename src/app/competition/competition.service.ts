@@ -59,9 +59,43 @@ export class CompetitionService {
 
   getSeasons(): Observable<any> {
     const headers = this.getHeaders();
+    console.log(headers);
     return this.http.get<any>(this.gitSeasonURL, { headers }).pipe(
       catchError(error => {
         console.error('Error fetching seasons:', error);
+        return throwError(() => error);
+      })
+    );
+  }
+
+  addPigeonToCompetition(competitionId: number, badge: string): Observable<any> {
+    const headers = this.getHeaders();
+    return this.http.put<any>(
+      `${this.baseUrl}/${competitionId}/addPigeonToCompetition`,
+      null,
+      {
+        headers,
+        params: { badge: badge }
+      }
+    ).pipe(
+      tap(() => {
+        console.log('Pigeon successfully added to the competition');
+      }),
+      catchError(error => {
+        console.error('Failed to add pigeon to competition:', error);
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getAllCompetitions(): Observable<any[]> {
+    const headers = this.getHeaders();
+    console.log(headers);
+    return this.http.get<any[]>(`${this.baseUrl}/getAllCompetitions`, { headers }).pipe(      
+      catchError(error => {
+        console.log(headers);
+        console.error('Error fetching competitions:', error);
+        console.log(headers);
         return throwError(() => error);
       })
     );
