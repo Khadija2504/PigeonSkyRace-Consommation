@@ -9,6 +9,7 @@ const routes: Routes = [
   {path: 'error', loadChildren: () => import('./error/error.module').then(m=> m.ErrorModule)},
   {path: 'season', loadChildren: () => import('./season/season.module').then(m=> m.SeasonModule), canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'organizer' }},
   {path: 'competition', loadChildren: () => import('./competition/competition.module').then(m => m.CompetitionModule), canActivate: [AuthGuard, RoleGuard], data: {expectedRole: 'organizer'}},
+  {path: 'results', loadChildren: () => import('./result/result.module').then(m => m.ResultModule)},
   {path: '', redirectTo: '/auth', pathMatch: 'full'},
 ];
 
