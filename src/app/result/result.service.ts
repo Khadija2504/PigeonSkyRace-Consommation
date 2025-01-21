@@ -51,4 +51,17 @@ export class ResultService {
       })
     );
   }
+
+  exportResults(): Observable<Blob> {
+    const headers = this.getHeaders();
+    const url = `${this.baseUrl}/exportResults`;
+  
+    return this.http.get(url, { headers, responseType: 'blob' }).pipe(
+      catchError((error) => {
+        console.error('Error exporting results:', error);
+        return throwError(() => error);
+      })
+    );
+  }
+  
 }
