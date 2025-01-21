@@ -18,9 +18,20 @@ export class AddSeasonComponent {
 
   constructor(private fb: FormBuilder, private seasonService: SeasonService, private router: Router) {
     this.seasonForm = this.fb.group({
-      name: ['', Validators.required],
-      date: ['', Validators.required]
+      name: ['', [Validators.required, Validators.nullValidator]],
+      date: ['', [Validators.required, this.futureOrPresentValidator]]
     });
+  }
+
+  futureOrPresentValidator(control: any): { [key: string]: boolean } | null {
+    if (control.value) {
+      const inputDate = new Date(control.value);
+      const currentDate = new Date();
+      if (inputDate < currentDate) {
+        return { futureOrPresent: true };
+      }
+    }
+    return null;
   }
 
   addSeason() {

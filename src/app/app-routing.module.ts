@@ -8,6 +8,7 @@ const routes: Routes = [
   {path: 'pigeon', loadChildren: () => import('./pigeon/pigeon.module').then(m => m.PigeonModule), canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'breeder' }},
   {path: 'error', loadChildren: () => import('./error/error.module').then(m=> m.ErrorModule)},
   {path: 'season', loadChildren: () => import('./season/season.module').then(m=> m.SeasonModule), canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'organizer' }},
+  {path: 'competition', loadChildren: () => import('./competition/competition.module').then(m => m.CompetitionModule), canActivate: [AuthGuard, RoleGuard], data: {expectedRole: 'organizer'}},
   {path: '', redirectTo: '/auth', pathMatch: 'full'},
 ];
 
