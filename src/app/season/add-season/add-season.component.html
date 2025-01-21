@@ -12,8 +12,10 @@
 
       <div class="form-group">
         <label for="date">date</label>
-        <input id="date" type="datetime" formControlName="date">
-        <div class="error" *ngIf="seasonForm.get('date')?.invalid && seasonForm.get('date')?.touched">
+        <input id="date" type="datetime-local" formControlName="date">
+        <small class="error" *ngIf="seasonForm.get('date')?.hasError('required')">Date is required.</small>
+        <small class="error" *ngIf="seasonForm.get('date')?.hasError('futureOrPresent')">Date must be in the present or future.</small>
+        <div  *ngIf="seasonForm.get('date')?.invalid && seasonForm.get('date')?.touched">
           Date is required.
         </div>
       </div>
