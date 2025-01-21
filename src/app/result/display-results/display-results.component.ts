@@ -20,7 +20,6 @@ export class DisplayResultsComponent implements OnInit{
     this.fetchResults();
   }
 
-  // Fetch results from the service
   fetchResults(): void {
     this.loading = true;
     this.resultService.getResults().subscribe({
