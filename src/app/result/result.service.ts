@@ -8,6 +8,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class ResultService {
   private baseUrl = 'http://localhost:8900/api/breeder';
+  private baseURLOrg = 'http://localhost:8900/api/organizer';
 
   constructor(private http: HttpClient) {}
 
@@ -63,5 +64,17 @@ export class ResultService {
       })
     );
   }
+
+  uploadRaceData(competitionId: number, file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file);
   
+    const url = `${this.baseURLOrg}/${competitionId}/uploadResults`;
+    return this.http.post(url, formData, { headers: this.getHeaders() }).pipe(
+      catchError((error) => {
+        console.error('Error uploading file:', error);
+        return throwError(() => error);
+      })
+    );
+  }
 }

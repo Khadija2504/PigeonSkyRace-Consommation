@@ -5,12 +5,14 @@ import { ResultRoutingModule } from './result-routing.module';
 import { ResultComponent } from './result.component';
 import { DisplayResultsComponent } from './display-results/display-results.component';
 import { DownloadResultsComponent } from './download-results/download-results.component';
+import { UploadArrivalDataComponent } from './upload-arrival-data/upload-arrival-data.component';
 
 
 @NgModule({
   declarations: [
     ResultComponent,
-    DisplayResultsComponent
+    DisplayResultsComponent,
+    UploadArrivalDataComponent,
   ],
   imports: [
     CommonModule,
