@@ -28,13 +28,9 @@ export class AuthService {
 
   getUserRole(): string | null {
     const token = this.getToken();
-    if (token) {
-      console.log(token);
-      
+    if (token) {      
       try {
-        const decodedToken = JSON.parse(atob(token.split('.')[1]));
-        console.log(decodedToken.role);
-        
+        const decodedToken = JSON.parse(atob(token.split('.')[1]));        
         return decodedToken.role;
       } catch (e) {
         return null;
@@ -42,4 +38,18 @@ export class AuthService {
     }
     return null;
   }
+
+  getRoles(): string[] {
+    const token = this.getToken();
+    if (token) {
+      try {
+        const decodedToken = JSON.parse(atob(token.split('.')[1]));
+        return decodedToken.roles || [];
+      } catch (e) {
+        return [];
+      }
+    }
+    return [];
+  }
+
 }
